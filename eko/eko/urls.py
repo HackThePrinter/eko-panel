@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from .settings import DEBUG
 
 admin.autodiscover()
 
@@ -22,3 +23,11 @@ urlpatterns = [
     url(r'^', include('ScoreboardEKO13.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+
+if DEBUG is True:
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/',
+            include(debug_toolbar.urls),
+            name='debug-toolbar-urls'),
+    ]

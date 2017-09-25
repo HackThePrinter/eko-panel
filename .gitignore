@@ -5,3 +5,5 @@ __pycache__
 *.bak
 *.pyc
 settings.py
+*/static/admin/
+*/static/debug_toolbar/
