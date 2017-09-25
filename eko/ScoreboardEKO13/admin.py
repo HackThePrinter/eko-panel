@@ -1,9 +1,9 @@
-from ScoreboardEKO13.models import Name, EventType, EventSubtype, Event
+from ScoreboardEKO13.models import Name, ExploitType, Vuln, Exploit
 from django.contrib import admin
 
 admin.site.register(Name)
-admin.site.register(EventType)
-admin.site.register(EventSubtype)
-admin.site.register(Event)
+admin.site.register(ExploitType)
+admin.site.register(Vuln)
+admin.site.register(Exploit)
 
 # Register your models here.
