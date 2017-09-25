@@ -1,0 +1,7 @@
+*.sqlite*
+*.swp
+*~
+__pycache__
+*.bak
+*.pyc
+settings.py
