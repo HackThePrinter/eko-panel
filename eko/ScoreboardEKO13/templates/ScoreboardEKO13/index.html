@@ -1,40 +1,32 @@
 {% load timetags %}
+{% load static %}
 <body>
     <h1>Hack The Printer!</h1>
     <p>Vulns found: {{ vulns_found }}</p>
     <p>Vulns exploited: {{ vulns_exploited }}</p>
     <p>Frist kill today (vuln): <em>{{ vuln_first_today }}</em> por <strong>{{ vuln_first_today.name.name }}</strong> a.k.a <strong>{{ vuln_first_today.name.nickname }}</strong></p>
     <p>First kill today (exploit): <em>{{ exploit_first_today }}</em> por <strong>{{ exploit_first_today.name.name }}</strong> a.k.a <strong>{{ exploit_first_today.name.nickname }}</strong></p>
-    <h2>Top 5 Vulns</h2>
+    <p>Latest kill today (vuln): <em>{{ vuln_last_today }}</em> por <strong>{{ vuln_last_today.name.name }}</strong> a.k.a <strong>{{ vuln_last_today.name.nickname }}</strong></p>
+    <p>Latest kill today (exploit): <em>{{ exploit_last_today }}</em> por <strong>{{ exploit_last_today.name.name }}</strong> a.k.a <strong>{{ exploit_last_today.name.nickname }}</strong></p>
+    <h2>Wall of Fame - Top 5</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-            </tr>
-        </thead>
         <tbody>
-        {% for top in vulns_top %}
+        {% for top in top_hackers %}
             <tr>
-                <td>{{ top.name }}</td>
-                <td>{{ top.qty }}</td>
+                <td>{{ top.0 }}</td>
+                <td>{{ top.1 }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
     <h2>Today's latest 5</h2>
     <table>
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Fecha y hora</th>
-            </tr>
-        </thead>
         <tbody>
-        {% for latest in vulns_latest %}
+        {% for latest in latest_hackers %}
             <tr>
                 <td>{{ latest.name.name }}</td>
                 <td>{{ latest.timestamp|print_timestamp }}</td>
+                <td><em>{{ latest.description }}</em></td>
             </tr>
         {% endfor %}
         </tbody>
