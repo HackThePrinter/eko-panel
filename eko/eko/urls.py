@@ -25,9 +25,14 @@ urlpatterns = [
 ]
 
 if DEBUG is True:
-    import debug_toolbar
+    from debug_toolbar import urls as debug_toolbar_urls
+    from django.conf.urls.static import static
+    from .settings import STATIC_URL, STATIC_ROOT
+
     urlpatterns += [
         url(r'^__debug__/',
-            include(debug_toolbar.urls),
+            include(debug_toolbar_urls),
             name='debug-toolbar-urls'),
     ]
+
+    urlpatterns += static(STATIC_URL, document_root=STATIC_ROOT)
