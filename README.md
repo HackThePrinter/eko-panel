@@ -29,7 +29,18 @@ vim eko/settings.py
 
 ### For a production server
 
-NGINX + uWSGI + Django is the best combination. Check this project to create a Docker container: https://github.com/dockerfiles/django-uwsgi-nginx.
+NGINX + uWSGI + Django is the best combination. Check this project to create a Docker container: https://github.com/dockerfiles/django-uwsgi-nginx. In the [deploy](deploy) directory there are some example config files. Just copy that directory to the server, then copy [eko](eko) project dir into *app/* and change the settings accordingly:
+
+* change `SECRET_KEY` for a [long random value](https://github.com/HacKanCuBa/passphrase-py#generate-a-password-of-16-characters-minimum-recommended), such as: `read -r -n 100 SECRET_KEY < <(LC_ALL=C tr -dc 'A-Za-z0-9_\-.,;:?/"[}]}|=+)(*&^%$#!@~' < /dev/urandom) && echo $SECRET_KEY` (note than some characters where left out).
+* disable debug mode! set `DEBUG = False`.
+* set `STATIC_ROOT = '/home/docker/volatile/static'` (if you didn't changed any path).
+
+Finally, simply run:
+
+```
+docker build -t hacktheprinter .
+docker run -d -p 80:80 hacktheprinter
+```
 
 ## License
 
