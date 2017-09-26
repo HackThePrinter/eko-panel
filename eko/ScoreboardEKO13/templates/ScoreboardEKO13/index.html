@@ -1,34 +1,127 @@
-{% load timetags %}
-{% load static %}
+{% load timetags %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+  <title>Hack The Printer!</title>
+</head>
+
 <body>
-    <h1>Hack The Printer!</h1>
-    <p>Vulns found: {{ vulns_found }}</p>
-    <p>Vulns exploited: {{ vulns_exploited }}</p>
-    <p>Frist kill today (vuln): <em>{{ vuln_first_today }}</em> por <strong>{{ vuln_first_today.name.name }}</strong> a.k.a <strong>{{ vuln_first_today.name.nickname }}</strong></p>
-    <p>First kill today (exploit): <em>{{ exploit_first_today }}</em> por <strong>{{ exploit_first_today.name.name }}</strong> a.k.a <strong>{{ exploit_first_today.name.nickname }}</strong></p>
-    <p>Latest kill today (vuln): <em>{{ vuln_last_today }}</em> por <strong>{{ vuln_last_today.name.name }}</strong> a.k.a <strong>{{ vuln_last_today.name.nickname }}</strong></p>
-    <p>Latest kill today (exploit): <em>{{ exploit_last_today }}</em> por <strong>{{ exploit_last_today.name.name }}</strong> a.k.a <strong>{{ exploit_last_today.name.nickname }}</strong></p>
-    <h2>Wall of Fame - Top 5</h2>
-    <table>
-        <tbody>
-        {% for top in top_hackers %}
-            <tr>
-                <td>{{ top.0 }}</td>
-                <td>{{ top.1 }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    <h2>Today's latest 5</h2>
-    <table>
-        <tbody>
-        {% for latest in latest_hackers %}
-            <tr>
-                <td>{{ latest.name.name }}</td>
-                <td>{{ latest.timestamp|print_timestamp }}</td>
-                <td><em>{{ latest.description }}</em></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3 col-md-3 col-lg-3"></div>
+      <div class="col-sm-6 col-md-6 col-lg-6">
+        <!-- Hack The Printer! LOGO -->
+        <img src="{% static 'imgs/hacktheprinter.png' %}" alt="Hack The Printer!" class="img-responsive center-block">
+      </div>
+      <div class="col-sm-3 col-md-3 col-lg-3"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-7 col-lg-7">
+        <div class="row text-center">
+          <div class="col-sm-10 col-md-10 col-lg-10">
+            <h1 class="neoncube-font-titles">Overview</h1>
+          </div>
+          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10 col-md-10 col-lg-10 text-center">
+            <div class="row">
+              <h4 class="neoncube-font-plus"><strong>Vulns found: {{ vulns_found }}</strong></h4>
+              <h4 class="neoncube-font-plus"><strong>Vulns exploited: {{ vulns_exploited }}</strong></h4>
+            </div>
+            <div class="row">
+              <h4 class="neoncube-font text-left">Frist kill today (vuln): {% if vuln_first_today %}<em>{{ vuln_first_today }}</em> por <strong>{{ vuln_first_today.name.name }}</strong> a.k.a <strong>{{ vuln_first_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+              <h4 class="neoncube-font text-left">First kill today (exploit): {% if exploit_first_today %}<em>{{ exploit_first_today }}</em> por <strong>{{ exploit_first_today.name.name }}</strong> a.k.a <strong>{{ exploit_first_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+              <h4 class="neoncube-font text-left">Latest kill today (vuln): {% if vuln_last_today %}<em>{{ vuln_last_today }}</em> por <strong>{{ vuln_last_today.name.name }}</strong> a.k.a <strong>{{ vuln_last_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+              <h4 class="neoncube-font text-left">Latest kill today (exploit): {% if exploit_last_today %}<em>{{ exploit_last_today }}</em> por <strong>{{ exploit_last_today.name.name }}</strong> a.k.a <strong>{{ exploit_last_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+            </div>
+          </div>
+          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+        <div class="row text-center">
+          <div class="col-sm-10 col-md-10 col-lg-10">
+            <h1 class="neoncube-font-titles">Hacking in Progress...</h1>
+          </div>
+          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+        <div class="row">
+          <!-- <div class="col-sm-1 col-md-1 col-lg-1"></div> -->
+          <div class="col-sm-10 col-md-10 col-lg-10 neoncube">
+            <video class="img-responsive neoncube-video center-block" autoplay loop>
+            <source src="{% static 'video/kakin_683x384.webm' %}" type="video/webm">
+            <source src="{% static 'video/kakin_683x384.mp4' %}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          </div>
+          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-5 col-lg-5">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="row text-center">
+            <h1 class="neoncube-font-titles">Wall of Fame</h1>
+          </div>
+          <div class="row neoncube pull-center">
+            <table class="table neoncube-font">
+              <thead>
+                <tr>
+                  <th class="col-sm-8 col-md-8 col-lg-8">Nombre</th>
+                  <th class="col-sm-4 col-md-4 col-lg-4 text-center">Cantidad</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for top in top_hackers %}
+                <tr>
+                  <td class="col-sm-8 col-md-8 col-lg-8">{{ top.0 }}</td>
+                  <td class="col-sm-4 col-md-4 col-lg-4 text-center">{{ top.1 }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="row text-center">
+            <h1 class="neoncube-font-titles">Today's latest</h1>
+          </div>
+          <div class="row neoncube pull-center text-right">
+            <table class="table neoncube-font">
+              <thead>
+                <tr>
+                  <th class="col-sm-3 col-md-3 col-lg-4 text-left">Nombre</th>
+                  <th class="col-sm-5 col-md-5 col-lg-4 text-center">Descripcion</th>
+                  <th class="col-sm-3 col-md-3 col-lg-4 text-right">Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for latest in latest_hackers %}
+                <tr>
+                  <td class="col-sm-3 col-md-3 col-lg-4 text-left">{{ latest.name.name }}</td>
+                  <td class="col-sm-5 col-md-5 col-lg-4 text-center">{{ latest.description }}</td>
+                  <td class="col-sm-3 col-md-3 col-lg-4 text-right">{{ latest.timestamp|print_timestamp }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <!-- fuck yeah, music bitch! -->
+      <audio autoplay loop>
+        <source src="{% static 'audio/hackers-halycon_on_and_on.ogg' %}" type="audio/ogg" />
+      </audio>
+      <script type="text/javascript" src="{% static 'jquery/js/jquery-3.2.1.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    </footer>
+  </div>
 </body>
+
+</html>
