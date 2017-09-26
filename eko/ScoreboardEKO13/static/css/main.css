@@ -1,5 +1,10 @@
 /*From Inet with Love*/
 
+@font-face {
+    font-family: 'Mr Dafoe';
+    src: url('../fonts/MrDafoe-Regular.ttf');
+}
+
 body {
   height: 100vh;
   -webkit-background-size: cover;
@@ -61,5 +66,6 @@ table {
 }
 /*change size of font for all in h1 titles*/
 .neoncube-font-titles {
-  font-size: 3.4vh;
+  font-size: 5.0vh;
+  font-family: 'Mr Dafoe';
 }
