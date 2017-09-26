@@ -34,6 +34,9 @@ NGINX + uWSGI + Django is the best combination. Check this project to create a D
 * change `SECRET_KEY` for a [long random value](https://github.com/HacKanCuBa/passphrase-py#generate-a-password-of-16-characters-minimum-recommended), such as: `read -r -n 100 SECRET_KEY < <(LC_ALL=C tr -dc 'A-Za-z0-9_\-.,;:?/"[}]}|=+)(*&^%$#!@~' < /dev/urandom) && echo $SECRET_KEY` (note than some characters where left out).
 * disable debug mode! set `DEBUG = False`.
 * set `STATIC_ROOT = '/home/docker/volatile/static'` (if you didn't changed any path).
+* change any other security related variable.
+
+If you are going to use SSL, discard [`nginx-app.conf`](deploy/nginx-app.conf) and overwrite it with [`nginx-app-ssl.conf`](deploy/nginx-app-ssl.conf).
 
 Finally, simply run:
 
@@ -41,6 +44,8 @@ Finally, simply run:
 docker build -t hacktheprinter .
 docker run -d -p 80:80 hacktheprinter
 ```
+
+There's also a simple script, [`deploy.bash`](deploy/deploy.bash) that does that, quick and ugly. READ IT FIRST! Don't blindly execute it.
 
 ## License
 

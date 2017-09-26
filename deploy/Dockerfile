@@ -17,7 +17,8 @@ FROM ubuntu:16.04
 MAINTAINER Dockerfiles
 
 # Install required packages and remove the apt packages cache when done.
-
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B3981E7A6852F782CC4951600A6F0A3C300EE8C
+RUN echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu xenial main" > /etc/apt/sources.list.d/nginx.list
 RUN apt-get update && \
     apt-get upgrade -y && \ 	
     apt-get install -y \
@@ -48,6 +49,8 @@ RUN pip3 install uwsgi
 # setup all the configfiles
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN sed -i '/^user /s/.*/user app;/' /etc/nginx/nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
+COPY dhparams.pem /etc/nginx/dhparams.pem
 COPY nginx-app.conf /etc/nginx/sites-available/default
 COPY supervisor-app.conf /etc/supervisor/conf.d/
 
