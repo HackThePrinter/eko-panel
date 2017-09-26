@@ -6,6 +6,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@hacktheprinter">
+  <meta name="twitter:site" content="@hacktheprinter">
+  <meta name="twitter:title" content="Hack The Printer Eko Scoreboard">
+  <meta name="twitter:description" content="Hack The Printer Scoreboard for Ekoparty 13">
+  <meta name="twitter:image" content="https://htp.noalvotoelectronico.com/static/imgs/hacktheprinter.png">
+
+  <meta property="og:url" content="https://htp.noalvotoelectronico.com/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Hack The Printer Eko Scoreboard" />
+  <meta property="og:description" content="Hack The Printer Scoreboard for Ekoparty 13" />
+  <meta property="og:image" content="https://htp.noalvotoelectronico.com/static/imgs/hacktheprinter.png" />
+
+  <meta http-equiv="refresh" content="600">
+
   <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
   <link rel="stylesheet" href="{% static 'css/main.css' %}" />
   <title>Hack The Printer!</title>
@@ -24,42 +40,47 @@
     <div class="row">
       <div class="col-sm-6 col-md-7 col-lg-7">
         <div class="row text-center">
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
           <div class="col-sm-10 col-md-10 col-lg-10">
             <h1 class="neoncube-font-titles">Overview</h1>
           </div>
-          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
         </div>
         <div class="row">
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
           <div class="col-sm-10 col-md-10 col-lg-10 text-center">
             <div class="row">
               <h4 class="neoncube-font-plus"><strong>Vulns found: {{ vulns_found }}</strong></h4>
               <h4 class="neoncube-font-plus"><strong>Vulns exploited: {{ vulns_exploited }}</strong></h4>
             </div>
             <div class="row">
-              <h4 class="neoncube-font text-left">Frist kill today (vuln): {% if vuln_first_today %}<em>{{ vuln_first_today }}</em> por <strong>{{ vuln_first_today.name.name }}</strong> a.k.a <strong>{{ vuln_first_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
-              <h4 class="neoncube-font text-left">First kill today (exploit): {% if exploit_first_today %}<em>{{ exploit_first_today }}</em> por <strong>{{ exploit_first_today.name.name }}</strong> a.k.a <strong>{{ exploit_first_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
-              <h4 class="neoncube-font text-left">Latest kill today (vuln): {% if vuln_last_today %}<em>{{ vuln_last_today }}</em> por <strong>{{ vuln_last_today.name.name }}</strong> a.k.a <strong>{{ vuln_last_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
-              <h4 class="neoncube-font text-left">Latest kill today (exploit): {% if exploit_last_today %}<em>{{ exploit_last_today }}</em> por <strong>{{ exploit_last_today.name.name }}</strong> a.k.a <strong>{{ exploit_last_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+              <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                <h4 class="neoncube-font text-left">Frist kill today (vuln): {% if vuln_first_today %}<em>{{ vuln_first_today }}</em> por <strong>{{ vuln_first_today.name.name }}</strong> a.k.a <strong>{{ vuln_first_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+                <h4 class="neoncube-font text-left">First kill today (exploit): {% if exploit_first_today %}<em>{{ exploit_first_today }}</em> por <strong>{{ exploit_first_today.name.name }}</strong> a.k.a <strong>{{ exploit_first_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+                <h4 class="neoncube-font text-left">Latest kill today (vuln): {% if vuln_last_today %}<em>{{ vuln_last_today }}</em> por <strong>{{ vuln_last_today.name.name }}</strong> a.k.a <strong>{{ vuln_last_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+                <h4 class="neoncube-font text-left">Latest kill today (exploit): {% if exploit_last_today %}<em>{{ exploit_last_today }}</em> por <strong>{{ exploit_last_today.name.name }}</strong> a.k.a <strong>{{ exploit_last_today.name.nickname }}</strong>{% else %}No one yet! Get going!{% endif %}</h4>
+              </div>
             </div>
           </div>
-          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
         </div>
         <div class="row text-center">
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
           <div class="col-sm-10 col-md-10 col-lg-10">
             <h1 class="neoncube-font-titles">Hacking in Progress...</h1>
           </div>
-          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
         </div>
         <div class="row">
           <!-- <div class="col-sm-1 col-md-1 col-lg-1"></div> -->
           <div class="col-sm-10 col-md-10 col-lg-10 neoncube">
-            <video class="img-responsive neoncube-video center-block" autoplay loop>
-            <source src="{% static 'video/kakin_683x384.webm' %}" type="video/webm">
+            <video class="img-responsive neoncube-video center-block" autoplay loop muted>
             <source src="{% static 'video/kakin_683x384.mp4' %}" type="video/mp4">
+            <source src="{% static 'video/kakin_683x384.webm' %}" type="video/webm">
             Your browser does not support the video tag.
           </video>
           </div>
-          <div class="col-sm-2 col-md-2 col-lg-2"></div>
+          <div class="col-sm-1 col-md-1 col-lg-1"></div>
         </div>
       </div>
       <div class="col-sm-6 col-md-5 col-lg-5">
