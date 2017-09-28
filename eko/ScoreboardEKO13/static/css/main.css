@@ -39,6 +39,13 @@ table {
   border-bottom: 2px solid #f8a1ca;
 }
 
+a {
+  color: #ff5eaa;
+}
+a:hover, a:focus {
+  color: #ff0078;
+}
+
 .neoncube {
   border: #f8a1ca;
   border-width: 3px;
@@ -70,7 +77,11 @@ table {
   font-family: 'Mr Dafoe';
 }
 
-@media (min-width: @screen-sm-min) {
+.text-big {
+  font-size: 130%;
+}
+
+@media (max-width: 765px) {
   body {
     height: 100%;
   }
